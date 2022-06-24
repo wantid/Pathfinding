@@ -1750,7 +1750,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669790593}
-  - component: {fileID: 669790594}
   m_Layer: 0
   m_Name: Map
   m_TagString: Untagged
@@ -1827,28 +1826,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &669790594
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 669790592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3e371e1e78a802b4f90a4004db8587dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  keyPrefab: {fileID: 5065901723335771090, guid: dcd0222f5bd66aa48a446b52106aa514, type: 3}
-  maxKeys: 3
-  curKeys: 0
-  keys: []
-  monsterGates:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  exitGate: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
