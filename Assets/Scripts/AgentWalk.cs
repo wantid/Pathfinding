@@ -2,16 +2,19 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KuplinovWalk : MonoBehaviour
+public class AgentWalk : MonoBehaviour
 {
+    [Header("DEBUG")]
     public GameObject mapPoints;
+    public Transform mp_Parent;
+    public GameObject wayPoints;
+    public Transform wp_Parent;
 
     public Vector3 destination;
 
-    public bool[] no_ways = new bool[3];
     bool isReady = true;
 
-    public static List<point> Map;
+    private List<point> Map;
     private List<point> Way;
 
     float toRotate;
@@ -23,7 +26,7 @@ public class KuplinovWalk : MonoBehaviour
 
         GetMap();
     }
-    private void FixedUpdate()
+    private void Update()
     {
         Debug.DrawRay(transform.position, transform.forward, Color.green);
         Debug.DrawRay(transform.position, transform.right, Color.green);
@@ -33,6 +36,25 @@ public class KuplinovWalk : MonoBehaviour
             DrawWay();
         else
             GoToPos();
+
+        DebugInput();
+    }
+    private void DebugInput()
+    {
+        if (Input.GetKeyUp(KeyCode.F1)) // Draw or Clear map
+        {
+            if (mp_Parent.childCount > 0)
+                foreach (Transform child in mp_Parent) Destroy(child.gameObject);
+            else
+                foreach (point _p in Map) Instantiate(mapPoints, new Vector3(_p.pos.x, 0, _p.pos.y), Quaternion.identity, mp_Parent);
+        }
+        if (Input.GetKeyUp(KeyCode.F2)) // Draw or Clear current way
+        {
+            if (wp_Parent.childCount > 0)
+                foreach (Transform child in wp_Parent) Destroy(child.gameObject);
+            else
+                foreach (point _p in Way) Instantiate(wayPoints, new Vector3(_p.pos.x, 0, _p.pos.y), Quaternion.identity, wp_Parent);
+        }
     }
     private void GetMap()
     {
@@ -50,32 +72,11 @@ public class KuplinovWalk : MonoBehaviour
             toRotate = 0;
         }
     }
-    private bool ChangeDirection()
-    {
-        RaycastHit hit;
-
-        if (Physics.Linecast(transform.position, transform.position + transform.forward * 2f, out hit))
-        {
-            if (hit.collider.CompareTag("Enemy"))
-            {
-                return true;
-            }
-        }
-
-        return false;
-    }
     private void DrawWay()
     {
-        if (GameManager.instance.keys.Count > 0
-            && transform.position == GameManager.instance.keys[0].transform.position)
-        {
-            Destroy(GameManager.instance.keys[0]);
-            GameManager.instance.keys.Remove(GameManager.instance.keys[0]);
-            GameManager.instance.curKeys++;
-        }
         if (!Navigation.isBusy)
         {
-            if (Way != null && Way.Count > 0 && !ChangeDirection())
+            if (Way != null && Way.Count > 0)
             {
                 posToGo = new Vector3(Way[0].pos.x, .5f, Way[0].pos.y);
                 Way.Remove(Way[0]);
@@ -85,16 +86,8 @@ public class KuplinovWalk : MonoBehaviour
             {
                 isReady = false;
                 Way = null;
-                point pointToGo;
-                Vector2 pos2;
 
-                if (GameManager.instance.keys.Count > 0)
-                {
-                    pos2 = new Vector2(GameManager.instance.keys[0].transform.position.x, GameManager.instance.keys[0].transform.position.z);
-                    pointToGo = Map.Find(p => p.pos == pos2);
-                }
-                else
-                    pointToGo = Map[Random.Range(0, Map.Count)];
+                point pointToGo = Map[Random.Range(0, Map.Count)];
 
                 if (new Vector3(pointToGo.pos.x, transform.position.y, pointToGo.pos.y) != transform.position)
                 {

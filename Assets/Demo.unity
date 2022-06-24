@@ -2349,7 +2349,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Kuplinov: {fileID: 1062437240}
-  lerpT: 0.25
+  T: 0.2
 --- !u!1001 &1018518029
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2504,8 +2504,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mapPoints: {fileID: 5065901723335771090, guid: dcd0222f5bd66aa48a446b52106aa514, type: 3}
+  mp_Parent: {fileID: 1501748689}
+  wayPoints: {fileID: 5065901723335771090, guid: 4139831879169de42960d026711cfb39, type: 3}
+  wp_Parent: {fileID: 1670165067}
   destination: {x: 0, y: 0, z: 0}
-  no_ways: 000000
 --- !u!4 &1062437240
 Transform:
   m_ObjectHideFlags: 0
@@ -3079,6 +3081,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8126853628939449877, guid: 1332482547081aa49a109715bbd7836c, type: 3}
   m_PrefabInstance: {fileID: 1460893330}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1501748688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1501748689}
+  m_Layer: 0
+  m_Name: MapPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1501748689
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1501748688}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1527459021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3327,6 +3359,36 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8126853628939449877, guid: 1332482547081aa49a109715bbd7836c, type: 3}
   m_PrefabInstance: {fileID: 1667951619}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1670165066
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1670165067}
+  m_Layer: 0
+  m_Name: WayPoints
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1670165067
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1670165066}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1689373386
 PrefabInstance:
   m_ObjectHideFlags: 0
